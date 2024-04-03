@@ -69,7 +69,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-post::admin.post-config-backup')
+                @include('package-forum::admin.post-config-backup')
             </div>
             <!--/SEARCH-->
 

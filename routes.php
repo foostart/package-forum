@@ -5,9 +5,9 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('post', [
-    'as' => 'post',
-    'uses' => 'Foostart\Post\Controllers\Front\PostFrontController@index'
+Route::get('forum', [
+    'as' => 'forum',
+    'uses' => 'Foostart\Forum\Controllers\Front\ForumFrontController@index'
 ]);
 
 
@@ -17,14 +17,14 @@ Route::get('post', [
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-        'namespace' => 'Foostart\Post\Controllers\Admin',
+        'namespace' => 'Foostart\Forum\Controllers\Admin',
     ], function () {
 
         /*
           |-----------------------------------------------------------------------
           | Manage post
           |-----------------------------------------------------------------------
-          | 1. List of posts
+          | 1. List of q&a items
           | 2. Edit post
           | 3. Delete post
           | 4. Add new post
@@ -36,75 +36,75 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/posts', [
-            'as' => 'posts.list',
-            'uses' => 'PostAdminController@index'
+        Route::get('admin/forums', [
+            'as' => 'forums.list',
+            'uses' => 'ForumAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/posts/edit', [
-            'as' => 'posts.edit',
-            'uses' => 'PostAdminController@edit'
+        Route::get('admin/forums/edit', [
+            'as' => 'forums.edit',
+            'uses' => 'ForumAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/posts/copy', [
-            'as' => 'posts.copy',
-            'uses' => 'PostAdminController@copy'
+        Route::get('admin/forums/copy', [
+            'as' => 'forums.copy',
+            'uses' => 'ForumAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/posts/edit', [
-            'as' => 'posts.post',
-            'uses' => 'PostAdminController@post'
+        Route::post('admin/forums/edit', [
+            'as' => 'forums.post',
+            'uses' => 'ForumAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/posts/delete', [
-            'as' => 'posts.delete',
-            'uses' => 'PostAdminController@delete'
+        Route::get('admin/forums/delete', [
+            'as' => 'forums.delete',
+            'uses' => 'ForumAdminController@delete'
         ]);
 
         /**
          * trash
          */
-        Route::get('admin/posts/trash', [
-            'as' => 'posts.trash',
-            'uses' => 'PostAdminController@trash'
+        Route::get('admin/forums/trash', [
+            'as' => 'forums.trash',
+            'uses' => 'ForumAdminController@trash'
         ]);
 
         /**
          * configs
          */
-        Route::get('admin/posts/config', [
-            'as' => 'posts.configGet',
-            'uses' => 'PostAdminController@config'
+        Route::get('admin/forums/config', [
+            'as' => 'forums.configGet',
+            'uses' => 'ForumAdminController@config'
         ]);
 
-        Route::post('admin/posts/config', [
-            'as' => 'posts.configPost',
-            'uses' => 'PostAdminController@config'
+        Route::post('admin/forums/config', [
+            'as' => 'forums.configPost',
+            'uses' => 'ForumAdminController@config'
         ]);
 
         /**
          * language
          */
-        Route::get('admin/posts/lang', [
-            'as' => 'posts.langGet',
-            'uses' => 'PostAdminController@lang'
+        Route::get('admin/forums/lang', [
+            'as' => 'forums.langGet',
+            'uses' => 'ForumAdminController@lang'
         ]);
 
-        Route::post('admin/posts/lang', [
-            'as' => 'posts.langPost',
-            'uses' => 'PostAdminController@lang'
+        Route::post('admin/forums/lang', [
+            'as' => 'forums.langPost',
+            'uses' => 'ForumAdminController@lang'
         ]);
 
     });

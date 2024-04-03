@@ -8,7 +8,7 @@ use URL,
     Redirect;
 use Foostart\Sample\Models\Samples;
 
-class PostUserController extends Controller
+class ForumUserController extends Controller
 {
     public $data = array();
 

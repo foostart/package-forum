@@ -4,7 +4,7 @@ use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 use Foostart\Comment\Models\Comment;
 
-class Post extends FooModel
+class Forum extends FooModel
 {
 
     /**

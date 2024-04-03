@@ -2,13 +2,13 @@
 
 namespace Foostart\Post;
 
+use URL;
+use Route;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
-use URL,
-    Route;
-use Illuminate\Http\Request;
 
-class PostServiceProvider extends ServiceProvider
+class ForumServiceProvider extends ServiceProvider
 {
 
     /**
@@ -23,7 +23,7 @@ class PostServiceProvider extends ServiceProvider
 //        $this->generateContextKey();
 
         // load view
-        $this->loadViewsFrom(__DIR__ . '/Views', 'package-post');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'package-forum');
 
         // include view composers
         require __DIR__ . "/composers.php";
@@ -60,19 +60,19 @@ class PostServiceProvider extends ServiceProvider
 
     /**
      * Public config to system
-     * @source: vendor/foostart/package-post/config
+     * @source: vendor/foostart/package-forum/config
      * @destination: config/
      */
     protected function publishConfig()
     {
         $this->publishes([
-            __DIR__ . '/config/package-post.php' => config_path('package-post.php'),
+            __DIR__ . '/config/package-forum.php' => config_path('package-forum.php'),
         ], 'config');
     }
 
     /**
      * Public language to system
-     * @source: vendor/foostart/package-post/lang
+     * @source: vendor/foostart/package-forum/lang
      * @destination: resources/lang
      */
     protected function publishLang()
@@ -84,27 +84,27 @@ class PostServiceProvider extends ServiceProvider
 
     /**
      * Public view to system
-     * @source: vendor/foostart/package-post/Views
-     * @destination: resources/views/vendor/package-post
+     * @source: vendor/foostart/package-forum/Views
+     * @destination: resources/views/vendor/package-forum
      */
     protected function publishViews()
     {
 
         $this->publishes([
-            __DIR__ . '/Views' => base_path('resources/views/vendor/package-post'),
+            __DIR__ . '/Views' => base_path('resources/views/vendor/package-forum'),
         ]);
     }
 
     protected function publishAssets()
     {
         $this->publishes([
-            __DIR__ . '/public' => public_path('packages/foostart/package-post'),
+            __DIR__ . '/public' => public_path('packages/foostart/package-forum'),
         ]);
     }
 
     /**
      * Publish migrations
-     * @source: foostart/package-post/database/migrations
+     * @source: foostart/package-forum/database/migrations
      * @destination: database/migrations
      */
     protected function publishMigrations()
@@ -116,7 +116,7 @@ class PostServiceProvider extends ServiceProvider
 
     /**
      * Publish seeders
-     * @source: foostart/package-post/database/seeders
+     * @source: foostart/package-forum/database/seeders
      * @destination: database/seeders
      */
     protected function publishSeeders()

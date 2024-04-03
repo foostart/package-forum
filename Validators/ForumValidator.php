@@ -3,11 +3,11 @@
 use Foostart\Category\Library\Validators\FooValidator;
 use Event;
 use \LaravelAcl\Library\Validators\AbstractValidator;
-use Foostart\Post\Models\Post;
+use Foostart\Post\Models\Forum;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
-class PostValidator extends FooValidator
+class ForumValidator extends FooValidator
 {
 
     protected $obj_post;
@@ -25,7 +25,7 @@ class PostValidator extends FooValidator
         self::$configs = $this->loadConfigs();
 
         // model
-        $this->obj_post = new Post();
+        $this->obj_post = new Forum();
 
         // language
         $this->lang_front = 'post-front';
@@ -93,7 +93,7 @@ class PostValidator extends FooValidator
     public function loadConfigs()
     {
 
-        $configs = config('package-post');
+        $configs = config('package-forum');
         return $configs;
     }
 

@@ -94,7 +94,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-post::admin.post-lang-backup')
+                @include('package-forum::admin.post-lang-backup')
             </div>
             <!--/SEARCH-->
 

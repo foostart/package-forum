@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 use Foostart\Category\Helpers\FoostartMigration;
 
-class CreatePostsTable extends FoostartMigration
+class CreateForumTable extends FoostartMigration
 {
     public function __construct()
     {
-        $this->table = 'posts';
-        $this->prefix_column = 'post_';
+        $this->table = 'forum_questions';
+        $this->prefix_column = 'forum_question_';
     }
 
     /**
@@ -27,7 +27,6 @@ class CreatePostsTable extends FoostartMigration
 
             // Relation
             $table->integer('category_id')->nullable()->comment('Category ID');
-            $table->integer('slideshow_id')->nullable()->comment('Slideshow ID');
 
             // Other attributes
             $table->string($this->prefix_column . 'name', 255)->comment('Post name');
@@ -37,9 +36,6 @@ class CreatePostsTable extends FoostartMigration
             $table->text($this->prefix_column . 'description')->comment('Post description');
             $table->string($this->prefix_column . 'image', 255)->nullable()->comment('Image path');
             $table->string($this->prefix_column . 'files', 1000)->nullable()->comment('The list of attachment filenames');
-            $table->text($this->prefix_column . 'cache_comments')->nullable()->comment('Comments of post');
-            $table->string($this->prefix_column . 'cache_other_posts', 1000)->nullable()->comment('The post id of related posts ');
-            $table->integer($this->prefix_column . 'cache_time')->nullable()->comment('Order in list of categories');
 
             //Set common columns
             $this->setCommonColumns($table);

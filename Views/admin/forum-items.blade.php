@@ -52,7 +52,7 @@
                     <div class="panel-body">
                         {!! Form::open(['route'=>['posts.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                        @include('package-post::admin.post-item')
+                        @include('package-forum::admin.post-item')
 
                         {!! csrf_field(); !!}
 
@@ -66,7 +66,7 @@
 
             <!--SEARCH-->
             <div class="col-md-3">
-                @include('package-post::admin.post-search')
+                @include('package-forum::admin.post-search')
             </div>
             <!--/SEARCH-->
 

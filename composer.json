@@ -1,6 +1,6 @@
 {
-    "name": "foostart/package-post",
-    "description": "Manage post",
+    "name": "foostart/package-forum",
+    "description": "Manage questions and answers",
     "keywords": [
         "foostart",
         "laravel 8 package post"
@@ -14,12 +14,10 @@
     ],
     "license": "MIT",
     "require": {
-        "foostart/package-slideshow": "*",
-        "foostart/package-filemanager": "*"
     },
     "autoload": {
         "psr-4": {
-            "Foostart\\Post\\": "/"
+            "Foostart\\Forum\\": "/"
         }
     },
     "minimum-stability": "dev"

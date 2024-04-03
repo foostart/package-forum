@@ -15,13 +15,13 @@ use Foostart\Category\Helpers\SortTable;
 |   $plang_front = 'post-front'
 */
 View::composer([
-    'package-post::admin.post-edit',
-    'package-post::admin.post-form',
-    'package-post::admin.post-items',
-    'package-post::admin.post-item',
-    'package-post::admin.post-search',
-    'package-post::admin.post-config',
-    'package-post::admin.post-lang',
+    'package-forum::admin.post-edit',
+    'package-forum::admin.post-form',
+    'package-forum::admin.post-items',
+    'package-forum::admin.post-item',
+    'package-forum::admin.post-search',
+    'package-forum::admin.post-config',
+    'package-forum::admin.post-lang',
 ], function ($view) {
 
     //Order by params

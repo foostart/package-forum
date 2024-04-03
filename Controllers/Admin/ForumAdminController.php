@@ -16,13 +16,13 @@ use URL, Route, Redirect;
 use Illuminate\Support\Facades\App;
 
 use Foostart\Category\Library\Controllers\FooController;
-use Foostart\Post\Models\Post;
+use Foostart\Post\Models\Forum;
 use Foostart\Category\Models\Category;
 use Foostart\Slideshow\Models\Slideshow;
-use Foostart\Post\Validators\PostValidator;
+use Foostart\Post\Validators\ForumValidator;
 
 
-class PostAdminController extends FooController
+class ForumAdminController extends FooController
 {
 
     public $obj_item = NULL;
@@ -38,19 +38,19 @@ class PostAdminController extends FooController
         parent::__construct();
 
         //models
-        $this->obj_item = new Post(array('perPage' => 10));
+        $this->obj_item = new Forum(array('perPage' => 10));
         $this->obj_category = new Category();
         $this->obj_slideshow = new Slideshow();
 
         //validators
-        $this->obj_validator = new PostValidator();
+        $this->obj_validator = new ForumValidator();
 
         //set language files
         $this->plang_admin = 'post-admin';
         $this->plang_front = 'post-front';
 
         //package name
-        $this->package_name = 'package-post';
+        $this->package_name = 'package-forum';
         $this->package_base_name = 'post';
 
         //root routers
@@ -297,8 +297,8 @@ class PostAdminController extends FooController
 
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $config_path = realpath(base_path('config/package-post.php'));
-        $package_path = realpath(base_path('vendor/foostart/package-post'));
+        $config_path = realpath(base_path('config/package-forum.php'));
+        $package_path = realpath(base_path('vendor/foostart/package-forum'));
 
         $config_bakup = $package_path . '/storage/backup/config';
         if (!file_exists($config_bakup)) {
@@ -317,7 +317,7 @@ class PostAdminController extends FooController
         if ($request->isMethod('post') && $is_valid_request) {
 
             //create backup of current config
-            file_put_contents($config_bakup . '/package-post-' . date('YmdHis', time()) . '.php', $content);
+            file_put_contents($config_bakup . '/package-forum-' . date('YmdHis', time()) . '.php', $content);
 
             //update new config
             $content = $request->get('content');
@@ -351,9 +351,9 @@ class PostAdminController extends FooController
 
         $is_valid_request = $this->isValidRequest($request);
         // display view
-        $langs = config('package-post.langs');
+        $langs = config('package-forum.langs');
         $lang_paths = [];
-        $package_path = realpath(base_path('vendor/foostart/package-post'));
+        $package_path = realpath(base_path('vendor/foostart/package-forum'));
 
         if (!empty($langs) && is_array($langs)) {
             foreach ($langs as $key => $value) {
